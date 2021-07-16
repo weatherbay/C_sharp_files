@@ -1,0 +1,10 @@
+C:\Users\Administrator\source\repos\Creation1\bin\Debug\Creation1.exe.config
+C:\Users\Administrator\source\repos\Creation1\bin\Debug\Creation1.exe
+C:\Users\Administrator\source\repos\Creation1\bin\Debug\Creation1.pdb
+C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.Form_Validation.resources
+C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.Properties.Resources.resources
+C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.csproj.GenerateResource.cache
+C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.exe
+C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.pdb
