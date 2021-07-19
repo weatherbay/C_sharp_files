@@ -317,7 +317,7 @@ namespace Creation1
             DataTable table = new1.Tables[0];
 
             //call adapter to fill table
-            //sqladapter1.Fill(table);
+            sqladapter1.Fill(table);
 
 
             //define no of rows count
@@ -332,6 +332,23 @@ namespace Creation1
 
             //outputing in data grid
 
+            dataGrid.ColumnCount = 2;
+
+            dataGrid.Columns[0].Name = "id";
+            dataGrid.Columns[1].Name = "username";
+            
+
+            
+
+            while (datareader1.Read())
+            {
+                dr_row_count++;
+                dr_column_count = datareader1.FieldCount;
+              
+            }
+
+            dataGrid.Rows.Add(dr_row_count);
+
             for (r = 0; r < dr_row_count; r++)
             {
                 for (c = 0; c < dr_column_count; c++)
@@ -343,22 +360,7 @@ namespace Creation1
 
             }
 
-            while (datareader1.Read())
-            {
-                dr_row_count++;
-                dr_column_count = datareader1.FieldCount;
-                dataGrid.ColumnCount = 2;
-                dataGrid.Rows.Add(dr_row_count);
-
-                dataGrid.Columns[0].Name = "id";
-                dataGrid.Columns[1].Name = "username";
-                
-                
-                
-                
-
-
-            }
+            
         }
     }
 

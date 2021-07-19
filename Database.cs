@@ -135,7 +135,7 @@ namespace Creation1
 
             //sqladapter for readall command
             sqladapter1 = new SqlDataAdapter(readall, MyConnection1);
-            globalcommand1.Dispose();
+            //globalcommand1.Dispose();
             //MyConnection1.Close();
 
 
