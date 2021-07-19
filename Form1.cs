@@ -226,11 +226,12 @@ namespace Creation1
         private string ReadUsersData()
             
         {
-            int dr_row_count;
-            int dr_column_count;
+            int dr_row_count =0;
+            int dr_column_count=0;
 
-            dr_column_count = 0;
-            dr_row_count = 0;
+            //dr_column_count = 0;
+            //dr_row_count = 0;
+            
 
             this.dataGrid.Visible = true;
             string id = this.RegnoBox.Text;
@@ -271,9 +272,30 @@ namespace Creation1
                 DataTable table = new1.Tables[0];
 
                 //call adapter to fill table
-                MessageBox.Show(sqladapter.Fill(table).ToString());
+                sqladapter.Fill(table);
 
 
+                //define no of rows count
+                int rowcount = table.Rows.Count;
+                int columnscount = table.Columns.Count;
+
+                
+                int r = 0;
+                int c = 0;
+                
+                string[,] a = new string[dr_row_count, dr_column_count];
+
+
+                //outputing in data grid
+
+                for (r = 0; r < dr_row_count; r++)
+                {
+                    for (c = 0; c < dr_column_count; c++)
+                    {
+                        a[r, c] = table.Rows[r][c].ToString();
+                        dataGrid.Rows[r].Cells[c].Value = a[r, c];
+                        }
+                }
 
 
 
@@ -284,16 +306,12 @@ namespace Creation1
                     dataGrid.ColumnCount = 2;
                     dataGrid.Columns[0].Name = "id";
                     dataGrid.Columns[1].Name = "username";
-                    //dataGrid.Rows.Add(4);
+                    dataGrid.Rows.Add(dr_row_count);
                     // dataGrid.Rows[0].Cells[0].Value = datareader.GetValue(0);
                     //dataGrid.Rows[0].Cells[1].Value = datareader.GetValue(1);
 
-
                     dr_row_count++;
                     dr_column_count = datareader.FieldCount;
-                    string[,] a = new string[dr_row_count, dr_column_count];
-
-
 
                 }
 
