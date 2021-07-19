@@ -226,14 +226,7 @@ namespace Creation1
         private string ReadUsersData()
             
         {
-            int dr_row_count =0;
-            int dr_column_count=0;
-
-            //dr_column_count = 0;
-            //dr_row_count = 0;
             
-
-            this.dataGrid.Visible = true;
             string id = this.RegnoBox.Text;
             
             //remove empty spaces
@@ -254,75 +247,18 @@ namespace Creation1
                 database.ReadDatabaseInput(id);
                var datareader = database.dataReader;
 
-                //var datareader1 = database.dataReader1;
-
-                //call sql adapter
-
-                var sqladapter = database.sqladapter;
-
                 string Output = "";
 
-                
-
-                //new
-                
-                
-                _C_ConnectDataSet1 new1 = new _C_ConnectDataSet1();
-
-                DataTable table = new1.Tables[0];
-
-                //call adapter to fill table
-                sqladapter.Fill(table);
-
-
-                //define no of rows count
-                int rowcount = table.Rows.Count;
-                int columnscount = table.Columns.Count;
-
-                
-                int r = 0;
-                int c = 0;
-                
-                string[,] a = new string[dr_row_count, dr_column_count];
-
-
-                //outputing in data grid
-
-                for (r = 0; r < dr_row_count; r++)
-                {
-                    for (c = 0; c < dr_column_count; c++)
-                    {
-                        a[r, c] = table.Rows[r][c].ToString();
-                        dataGrid.Rows[r].Cells[c].Value = a[r, c];
-                        }
-                }
-
-
+               
 
                 while (datareader.Read())
                 {
                     Output = Output + datareader.GetValue(0) + "-" + datareader.GetValue(1) + "\n";
 
-                    dataGrid.ColumnCount = 2;
-                    dataGrid.Columns[0].Name = "id";
-                    dataGrid.Columns[1].Name = "username";
-                    dataGrid.Rows.Add(dr_row_count);
-                    // dataGrid.Rows[0].Cells[0].Value = datareader.GetValue(0);
-                    //dataGrid.Rows[0].Cells[1].Value = datareader.GetValue(1);
-
-                    dr_row_count++;
-                    dr_column_count = datareader.FieldCount;
-
                 }
 
 
                 return Output;
-                // MessageBox.Show(Output);
-
-                //datareader.Close();
-                //database.globalcommand.Dispose();
-                //database.MyConnection.Close();
-
                 
             }
 
@@ -336,11 +272,94 @@ namespace Creation1
 
 
             return null;
-
-
             
         }
-        
+
+
+
+        private void PopulateButton_Click(object sender, EventArgs e)
+        {
+            Populatefxn();
+        }
+
+        private void Populatefxn()
+        {
+            this.dataGrid.Visible = true;
+            int dr_row_count = 0;
+            int dr_column_count = 0;
+
+            //calling the database class
+            var database = new Database();
+
+            //call connection strings method
+
+            database.Set_Connection_Parameter();
+
+
+            //call method
+
+            database.ReadDatabase();
+
+            //call datareader
+
+            var datareader1 = database.dataReader1;
+
+            //call sqladapter
+
+            var sqladapter1 = database.sqladapter1;
+
+
+            //set connection for datasets
+
+
+            _C_ConnectDataSet1 new1 = new _C_ConnectDataSet1();
+
+            DataTable table = new1.Tables[0];
+
+            //call adapter to fill table
+            //sqladapter1.Fill(table);
+
+
+            //define no of rows count
+            int rowcount = table.Rows.Count;
+            int columnscount = table.Columns.Count;
+
+
+            int r = 0;
+            int c = 0;
+
+            string[,] a = new string[rowcount, columnscount];
+
+            //outputing in data grid
+
+            for (r = 0; r < dr_row_count; r++)
+            {
+                for (c = 0; c < dr_column_count; c++)
+                {
+                    a[r, c] = table.Rows[r][c].ToString();
+                    dataGrid.Rows[r].Cells[c].Value = a[r, c];
+                }
+
+
+            }
+
+            while (datareader1.Read())
+            {
+                dr_row_count++;
+                dr_column_count = datareader1.FieldCount;
+                dataGrid.ColumnCount = 2;
+                dataGrid.Rows.Add(dr_row_count);
+
+                dataGrid.Columns[0].Name = "id";
+                dataGrid.Columns[1].Name = "username";
+                
+                
+                
+                
+
+
+            }
+        }
     }
 
 
@@ -372,7 +391,7 @@ namespace Creation1
 
         public void Set_Global_Variables()
         {
-            global_connection_string = @"Data Source=WIN-BEHF8SQE8DC;Database=C#Connect;Integrated Security=True;Connect Timeout=30";
+            global_connection_string = @"Data Source=WIN-BEHF8SQE8DC;Database=C#Connect;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true";
 
             sql_command1 = "Select id,username from users where id=2";
             sql_command2 = "Insert into users (username,Id) values('" + "lam scoth" + "',3)";

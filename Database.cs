@@ -10,10 +10,9 @@ namespace Creation1
 
     {
         //connection variable to the database
-        public SqlConnection MyConnection;
+        public SqlConnection MyConnection, MyConnection1;
 
-        //tobisql connection
-        public SqlConnection tobisqlconnection;
+        
         
 
 
@@ -22,12 +21,12 @@ namespace Creation1
 
         //global command for initializing sql command
 
-        public SqlCommand globalcommand;
+        public SqlCommand globalcommand, globalcommand1;
 
 
         //sqladapter
 
-        public SqlDataAdapter sqladapter;
+        public SqlDataAdapter sqladapter1;
         
         //sql string commands
 
@@ -39,14 +38,14 @@ namespace Creation1
 
 
         //data reader command
-        public SqlDataReader dataReader;
+        public SqlDataReader dataReader, dataReader1;
          
 
         //connection mtd to be called
 
         public void Set_Connection_Parameter()
         {
-            connectionstrings = @"Data Source=WIN-BEHF8SQE8DC;Database=C#Connect;Integrated Security=True;Connect Timeout=30";
+            connectionstrings = @"Data Source=WIN-BEHF8SQE8DC;Database=C#Connect;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true";
 
         }
 
@@ -87,47 +86,65 @@ namespace Creation1
             
             //establish sql connection to database
             MyConnection = new SqlConnection(connectionstrings);
-            tobisqlconnection = new SqlConnection(connectionstrings);
+
            MyConnection.Open();
-            //tobisqlconnection.Open();
             
-            //show msgbox for connection in form
-
-
-            //sqldatareader is used to read data from database in c#
+            
+            
 
             
 
             //read command by user id
             readcommand = "select id,username from registration where id =@id";
-            readall = "select id,username from registration";
-            //readcommand1 = "select id,username from registration where id =@id";
+            
+            
             globalcommand = new SqlCommand(readcommand, MyConnection);
-            //globalcommand1 = new SqlCommand(readcommand1, tobisqlconnection);
+            
 
             globalcommand.Parameters.Add("@id", System.Data.SqlDbType.VarChar, 10).Value = id;
-            //globalcommand1.Parameters.Add("@id", System.Data.SqlDbType.VarChar, 10).Value = id;
+            
 
             //call datareader in form
 
             dataReader = globalcommand.ExecuteReader();
-
-            
-
-            sqladapter = new SqlDataAdapter(readall, tobisqlconnection);
-
-            
-
-
-            
-            
+            globalcommand.Dispose();
+            MyConnection.Close();
         }
 
 
 
+        //user read method
+        public void ReadDatabase()
+        {
+
+            //establish sql connection to database
+            MyConnection1 = new SqlConnection(connectionstrings);
+            MyConnection1.Open();
+            
 
 
-        
+            //read all command
+            readall = "select id,username from registration";
+
+            //global command for read all
+            globalcommand1 = new SqlCommand(readall, MyConnection1);
+            
+            //datareader for readall
+            dataReader1 = globalcommand1.ExecuteReader();
+            
+
+            //sqladapter for readall command
+            sqladapter1 = new SqlDataAdapter(readall, MyConnection1);
+            globalcommand1.Dispose();
+            //MyConnection1.Close();
+
+
+
+
+
+        }
+
+
 
     }
 }

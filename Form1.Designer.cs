@@ -39,6 +39,7 @@ namespace Creation1
             this.DeleteButton = new System.Windows.Forms.Button();
             this.ViewUsers = new System.Windows.Forms.Button();
             this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.PopulateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,6 +156,19 @@ namespace Creation1
             this.dataGrid.Size = new System.Drawing.Size(293, 44);
             this.dataGrid.TabIndex = 9;
             // 
+            // PopulateButton
+            // 
+            this.PopulateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PopulateButton.Location = new System.Drawing.Point(178, 134);
+            this.PopulateButton.Name = "PopulateButton";
+            this.PopulateButton.Size = new System.Drawing.Size(77, 23);
+            this.PopulateButton.TabIndex = 10;
+            this.PopulateButton.Text = "Populate";
+            this.PopulateButton.UseVisualStyleBackColor = true;
+            this.PopulateButton.Click += new System.EventHandler(this.PopulateButton_Click);
+            // 
             // Form_Validation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,6 +176,7 @@ namespace Creation1
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(317, 335);
+            this.Controls.Add(this.PopulateButton);
             this.Controls.Add(this.dataGrid);
             this.Controls.Add(this.ViewUsers);
             this.Controls.Add(this.DeleteButton);
@@ -195,6 +210,7 @@ namespace Creation1
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button ViewUsers;
         private System.Windows.Forms.DataGridView dataGrid;
+        private System.Windows.Forms.Button PopulateButton;
     }
 }
 
