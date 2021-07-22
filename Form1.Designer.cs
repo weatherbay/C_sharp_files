@@ -42,6 +42,7 @@ namespace Creation1
             this.PopulateButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.Page2Button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,6 +193,19 @@ namespace Creation1
             this.label2.TabIndex = 12;
             this.label2.Text = "regno";
             // 
+            // Page2Button
+            // 
+            this.Page2Button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Page2Button.Location = new System.Drawing.Point(256, 6);
+            this.Page2Button.Name = "Page2Button";
+            this.Page2Button.Size = new System.Drawing.Size(57, 23);
+            this.Page2Button.TabIndex = 13;
+            this.Page2Button.Text = "Page2";
+            this.Page2Button.UseVisualStyleBackColor = true;
+            this.Page2Button.Click += new System.EventHandler(this.Page2Button_Click);
+            // 
             // Form_Validation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,6 +213,7 @@ namespace Creation1
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(317, 335);
+            this.Controls.Add(this.Page2Button);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PopulateButton);
@@ -238,6 +253,7 @@ namespace Creation1
         private System.Windows.Forms.Button PopulateButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Page2Button;
     }
 }
 

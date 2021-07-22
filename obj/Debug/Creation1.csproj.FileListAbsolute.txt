@@ -8,3 +8,4 @@ C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.csproj.Generat
 C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.exe
 C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.pdb
+C:\Users\Administrator\source\repos\Creation1\obj\Debug\Creation1.Page2.resources

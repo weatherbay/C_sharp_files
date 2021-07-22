@@ -396,10 +396,6 @@ namespace Creation1
                     Output = "id, not found";
                     return Output;
                 }
-
-                
-
-                
                 
             }
 
@@ -521,6 +517,20 @@ namespace Creation1
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+
+
+        //page2 button click
+        private void Page2Button_Click(object sender, EventArgs e)
+        {
+            //create an instance of page2 form
+            Page2 page2 = new Page2();
+            page2.Show();
+
+            this.Visible = false;
+            this.Hide();
+
 
         }
     }
