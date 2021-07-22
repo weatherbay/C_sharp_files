@@ -40,12 +40,14 @@ namespace Creation1
             this.ViewUsers = new System.Windows.Forms.Button();
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.PopulateButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // Username
             // 
-            this.Username.Location = new System.Drawing.Point(64, 37);
+            this.Username.Location = new System.Drawing.Point(70, 40);
             this.Username.Name = "Username";
             this.Username.Size = new System.Drawing.Size(165, 20);
             this.Username.TabIndex = 0;
@@ -56,7 +58,7 @@ namespace Creation1
             this.RegnoBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RegnoBox.Location = new System.Drawing.Point(64, 84);
+            this.RegnoBox.Location = new System.Drawing.Point(69, 84);
             this.RegnoBox.Name = "RegnoBox";
             this.RegnoBox.Size = new System.Drawing.Size(165, 20);
             this.RegnoBox.TabIndex = 1;
@@ -67,9 +69,9 @@ namespace Creation1
             this.RegisterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RegisterButton.Location = new System.Drawing.Point(12, 134);
+            this.RegisterButton.Location = new System.Drawing.Point(3, 134);
             this.RegisterButton.Name = "RegisterButton";
-            this.RegisterButton.Size = new System.Drawing.Size(77, 23);
+            this.RegisterButton.Size = new System.Drawing.Size(57, 23);
             this.RegisterButton.TabIndex = 2;
             this.RegisterButton.Text = "Register";
             this.RegisterButton.UseVisualStyleBackColor = true;
@@ -114,9 +116,9 @@ namespace Creation1
             this.UpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.UpdateButton.Location = new System.Drawing.Point(93, 221);
+            this.UpdateButton.Location = new System.Drawing.Point(185, 134);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(106, 23);
+            this.UpdateButton.Size = new System.Drawing.Size(58, 23);
             this.UpdateButton.TabIndex = 6;
             this.UpdateButton.Text = "UpdateButton";
             this.UpdateButton.UseVisualStyleBackColor = true;
@@ -127,9 +129,9 @@ namespace Creation1
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteButton.Location = new System.Drawing.Point(93, 250);
+            this.DeleteButton.Location = new System.Drawing.Point(249, 134);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(106, 23);
+            this.DeleteButton.Size = new System.Drawing.Size(65, 23);
             this.DeleteButton.TabIndex = 7;
             this.DeleteButton.Text = "DeleteButton";
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -140,9 +142,9 @@ namespace Creation1
             this.ViewUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ViewUsers.Location = new System.Drawing.Point(95, 134);
+            this.ViewUsers.Location = new System.Drawing.Point(66, 134);
             this.ViewUsers.Name = "ViewUsers";
-            this.ViewUsers.Size = new System.Drawing.Size(77, 23);
+            this.ViewUsers.Size = new System.Drawing.Size(49, 23);
             this.ViewUsers.TabIndex = 8;
             this.ViewUsers.Text = "View";
             this.ViewUsers.UseVisualStyleBackColor = true;
@@ -151,9 +153,9 @@ namespace Creation1
             // dataGrid
             // 
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(1, 279);
+            this.dataGrid.Location = new System.Drawing.Point(1, 221);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(293, 44);
+            this.dataGrid.Size = new System.Drawing.Size(304, 102);
             this.dataGrid.TabIndex = 9;
             // 
             // PopulateButton
@@ -161,13 +163,32 @@ namespace Creation1
             this.PopulateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PopulateButton.Location = new System.Drawing.Point(178, 134);
+            this.PopulateButton.Location = new System.Drawing.Point(121, 134);
             this.PopulateButton.Name = "PopulateButton";
-            this.PopulateButton.Size = new System.Drawing.Size(77, 23);
+            this.PopulateButton.Size = new System.Drawing.Size(58, 23);
             this.PopulateButton.TabIndex = 10;
             this.PopulateButton.Text = "Populate";
             this.PopulateButton.UseVisualStyleBackColor = true;
             this.PopulateButton.Click += new System.EventHandler(this.PopulateButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "username";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 91);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "regno";
             // 
             // Form_Validation
             // 
@@ -176,6 +197,8 @@ namespace Creation1
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(317, 335);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.PopulateButton);
             this.Controls.Add(this.dataGrid);
             this.Controls.Add(this.ViewUsers);
@@ -211,6 +234,8 @@ namespace Creation1
         private System.Windows.Forms.Button ViewUsers;
         private System.Windows.Forms.DataGridView dataGrid;
         private System.Windows.Forms.Button PopulateButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

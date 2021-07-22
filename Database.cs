@@ -10,7 +10,7 @@ namespace Creation1
 
     {
         //connection variable to the database
-        public SqlConnection MyConnection, MyConnection1;
+        public SqlConnection MyConnection;
 
         
         
@@ -21,24 +21,24 @@ namespace Creation1
 
         //global command for initializing sql command
 
-        public SqlCommand globalcommand, globalcommand1;
+        public SqlCommand globalcommand;
 
 
         //sqladapter
 
-        public SqlDataAdapter sqladapter1;
+        public SqlDataAdapter sqladapter;
         
         //sql string commands
 
         public String insertcommand;
         public String updatecommand;
-        public String deletecommand;
+        private String deletecommand;
         public String readcommand;
         public String readall;
 
 
         //data reader command
-        public SqlDataReader dataReader, dataReader1;
+        public SqlDataReader dataReader;
          
 
         //connection mtd to be called
@@ -50,7 +50,7 @@ namespace Creation1
         }
 
 
-        //insert user data method
+        //insert user data method by clicking on register button
         public void InsertData(string username, string id)
         {
 
@@ -80,7 +80,7 @@ namespace Creation1
 
 
 
-        //user read method
+        //read user data based on user regno by clicking on view button
         public void ReadDatabaseInput(string id)
         {
             
@@ -89,11 +89,6 @@ namespace Creation1
 
            MyConnection.Open();
             
-            
-            
-
-            
-
             //read command by user id
             readcommand = "select id,username from registration where id =@id";
             
@@ -113,13 +108,13 @@ namespace Creation1
 
 
 
-        //user read method
+        //read all user data in the database by click on populate button
         public void ReadDatabase()
         {
 
             //establish sql connection to database
-            MyConnection1 = new SqlConnection(connectionstrings);
-            MyConnection1.Open();
+            MyConnection = new SqlConnection(connectionstrings);
+            MyConnection.Open();
             
 
 
@@ -127,21 +122,82 @@ namespace Creation1
             readall = "select id,username from registration";
 
             //global command for read all
-            globalcommand1 = new SqlCommand(readall, MyConnection1);
+            globalcommand = new SqlCommand(readall, MyConnection);
             
             //datareader for readall
-            dataReader1 = globalcommand1.ExecuteReader();
+            dataReader = globalcommand.ExecuteReader();
             
 
             //sqladapter for readall command
-            sqladapter1 = new SqlDataAdapter(readall, MyConnection1);
-            //globalcommand1.Dispose();
-            //MyConnection1.Close();
+            sqladapter = new SqlDataAdapter(readall, MyConnection);
+            globalcommand.Dispose();
+            
+
+        }
 
 
+        //update user data based on user regno by clicking on update button
+        public void UpdateDatabaseInput(string id, string username)
+        {
+
+            //establish sql connection to database
+            MyConnection = new SqlConnection(connectionstrings);
+
+            MyConnection.Open();
 
 
+            //sqladapter is the method to insert, delete, update data in c#
+            SqlDataAdapter adapter = new SqlDataAdapter();
 
+            //read command by user id
+            updatecommand = "update registration set username=@username where id =@id";
+
+            
+
+            globalcommand = new SqlCommand(updatecommand, MyConnection);
+
+
+            globalcommand.Parameters.Add("@id", System.Data.SqlDbType.VarChar, 10).Value = id;
+            globalcommand.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 150).Value = username;
+
+
+            //call datareader in form
+            adapter.UpdateCommand = globalcommand;
+            adapter.UpdateCommand.ExecuteNonQuery();
+            globalcommand.Dispose();
+            MyConnection.Close();
+        }
+
+
+        //delete user data based on user regno by clicking on delete button
+        public void DeleteDatabaseInput(string id)
+        {
+
+            //establish sql connection to database
+            MyConnection = new SqlConnection(connectionstrings);
+
+            MyConnection.Open();
+
+
+            //sqladapter is the method to insert, delete, update data in c#
+            SqlDataAdapter adapter = new SqlDataAdapter();
+
+            //read command by user id
+            deletecommand = "delete registration where id =@id";
+
+            
+
+            globalcommand = new SqlCommand(deletecommand, MyConnection);
+
+
+            globalcommand.Parameters.Add("@id", System.Data.SqlDbType.VarChar, 10).Value = id;
+            
+
+            //call datareader in form
+            adapter.DeleteCommand = globalcommand;
+            adapter.DeleteCommand.ExecuteNonQuery();
+            globalcommand.Dispose();
+            MyConnection.Close();
         }
 
 

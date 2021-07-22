@@ -165,12 +165,18 @@ namespace Creation1
             this.dataGrid.Visible = false;
         }
 
+        //updatebutton click
+
         private void UpdateButton_Click(object sender, EventArgs e)
         {
+
+            Updatemtd();
+            
             //call the global variable class
-            Global_variables gv1 = new Global_variables();
+            //Global_variables gv1 = new Global_variables();
 
             //call the global varibale method
+            /*
             gv1.Set_Global_Variables();
 
             //establish sql connection
@@ -187,10 +193,78 @@ namespace Creation1
             gv1.global_command3.Dispose();
             MessageBox.Show("field updated");
             gv1.MyConnection3.Close();
+
+            */
+
+
         }
+
+        private void Updatemtd()
+        {
+            this.ErrorLabel.Text = UpdateFunction();
+        }
+
+        //user update button
+        private string UpdateFunction()
+        {
+            //username entered by user
+            string username = this.Username.Text;
+
+
+
+            //user id
+            string id = this.RegnoBox.Text;
+
+            //calling the database class
+            var database = new Database();
+
+            
+
+            database.Set_Connection_Parameter();
+
+            //remove empty spaces
+
+            username.Replace(" ", "");
+
+            //no case sensitive
+            username.ToLower();
+
+            //checks for empty user input
+
+            if (username != string.Empty)
+            {
+                for (int i = 0; i < username.Length; i++)
+                {
+                    if ("0123456789./*%+=-^@#!,><_`~;:}{[]()&$".Any(c => username[i] == c))
+
+                        return "text only";
+
+                }
+
+
+                if (id != string.Empty)
+
+                    //insert to database
+                    database.UpdateDatabaseInput(id,username);
+                MessageBox.Show(username +", info updated");
+
+            }
+
+
+
+            else if (username == string.Empty || id == string.Empty)
+                return "empty field";
+
+
+            return null;
+        }
+
+
+        //deletebutton
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            /*
             //call the global variable class
             Global_variables gv1 = new Global_variables();
 
@@ -211,11 +285,54 @@ namespace Creation1
             gv1.global_command4.Dispose();
             MessageBox.Show("field deleted");
             gv1.MyConnection4.Close();
+
+            */
+
+            Deletefxn();
+        }
+
+        //delete user data by supplying id
+        private void Deletefxn()
+        {
+            //user id
+            string id = this.RegnoBox.Text;
+
+            //calling the database class
+            var database = new Database();
+
+
+
+            database.Set_Connection_Parameter();
+
+            //remove empty spaces
+
+            id.Replace(" ", "");
+
+            
+
+            //checks for empty user input
+
+            if (id != string.Empty)
+            {
+
+                    //delete from database
+                    database.DeleteDatabaseInput(id);
+                MessageBox.Show(id + ", info deleted");
+
+            }
+
+
+
+            else if (id == string.Empty)
+                MessageBox.Show("empty id");
+
+
+            
         }
 
 
 
-        //view users data on the database
+        //viewbutton
         private void ViewUsers_Click(object sender, EventArgs e)
         {
             this.ErrorLabel.Text = ReadUsersData();
@@ -223,6 +340,8 @@ namespace Creation1
             
         }
 
+
+        //load user data by supplying user id
         private string ReadUsersData()
             
         {
@@ -276,15 +395,20 @@ namespace Creation1
         }
 
 
-
+        //populatebutton
         private void PopulateButton_Click(object sender, EventArgs e)
         {
             Populatefxn();
         }
 
+
+        //load user data from database by clicking on populate button
         private void Populatefxn()
         {
+            //make the data grid visible on this buttonclick
             this.dataGrid.Visible = true;
+            
+            //declare variable for table rows and columns
             int dr_row_count = 0;
             int dr_column_count = 0;
 
@@ -296,17 +420,17 @@ namespace Creation1
             database.Set_Connection_Parameter();
 
 
-            //call method
+            //call database method
 
             database.ReadDatabase();
 
             //call datareader
 
-            var datareader1 = database.dataReader1;
+            var datareader = database.dataReader;
 
             //call sqladapter
 
-            var sqladapter1 = database.sqladapter1;
+            var sqladapter = database.sqladapter;
 
 
             //set connection for datasets
@@ -314,13 +438,15 @@ namespace Creation1
 
             _C_ConnectDataSet1 new1 = new _C_ConnectDataSet1();
 
+            
+            //define table to be called from database
             DataTable table = new1.Tables[0];
 
             //call adapter to fill table
-            sqladapter1.Fill(table);
+            sqladapter.Fill(table);
 
 
-            //define no of rows count
+            //count no of rows and column from database table selected
             int rowcount = table.Rows.Count;
             int columnscount = table.Columns.Count;
 
@@ -328,9 +454,13 @@ namespace Creation1
             int r = 0;
             int c = 0;
 
+            //create an array of the table rows and columns
+
             string[,] a = new string[rowcount, columnscount];
 
-            //outputing in data grid
+
+
+            //specified the column count for data output to the datagrid
 
             dataGrid.ColumnCount = 2;
 
@@ -338,14 +468,16 @@ namespace Creation1
             dataGrid.Columns[1].Name = "username";
             
 
-            
-
-            while (datareader1.Read())
+           
+            while (datareader.Read())
             {
                 dr_row_count++;
-                dr_column_count = datareader1.FieldCount;
+                dr_column_count = datareader.FieldCount;
               
             }
+
+
+            //add rows and column to datagrid
 
             dataGrid.Rows.Add(dr_row_count);
 
@@ -361,6 +493,11 @@ namespace Creation1
             }
 
             
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
