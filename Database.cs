@@ -103,7 +103,7 @@ namespace Creation1
 
             dataReader = globalcommand.ExecuteReader();
             globalcommand.Dispose();
-            MyConnection.Close();
+            
         }
 
 

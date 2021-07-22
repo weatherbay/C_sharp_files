@@ -96,6 +96,7 @@ namespace Creation1
             this.InsertButton.TabIndex = 4;
             this.InsertButton.Text = "InsertButton";
             this.InsertButton.UseVisualStyleBackColor = true;
+            this.InsertButton.Visible = false;
             this.InsertButton.Click += new System.EventHandler(this.InsertButton_Click);
             // 
             // ReadButton
@@ -109,6 +110,7 @@ namespace Creation1
             this.ReadButton.TabIndex = 5;
             this.ReadButton.Text = "ReadButton";
             this.ReadButton.UseVisualStyleBackColor = true;
+            this.ReadButton.Visible = false;
             this.ReadButton.Click += new System.EventHandler(this.ReadButton_Click);
             // 
             // UpdateButton

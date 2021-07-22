@@ -28,20 +28,22 @@ namespace Creation1
 
         }
 
-        //method to submit user input
+        //register button
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
             SubmitValidation();
         }
 
-        //output user validation error in input box
+        
         private void SubmitValidation()
 
         {
+            //output user validation error in label text
             this.ErrorLabel.Text = ValidationFunction();
         }
 
+        //register user data fxn
         private string ValidationFunction()
         {
             string username = this.Username.Text;
@@ -95,11 +97,16 @@ namespace Creation1
 
         }
 
+
+
+        //readbutton
+
         private void ReadButton_Click(object sender, EventArgs e)
         {
             ReadDatabaseInput();
         }
 
+        //hardcoded read method
         private void ReadDatabaseInput()
         {
             //call global variable class
@@ -135,6 +142,8 @@ namespace Creation1
             gv1.MyConnection1.Close();
         }
 
+
+        //hard coded insert method
         private void InsertButton_Click(object sender, EventArgs e)
         {
             //call the global variable class
@@ -160,12 +169,17 @@ namespace Creation1
 
         }
 
+
+
+
+        //form method
         private void Form_Validation_Load(object sender, EventArgs e)
         {
+            //set datagrid visibility to false in form window
             this.dataGrid.Visible = false;
         }
 
-        //updatebutton click
+        //updatebutton
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
@@ -204,7 +218,7 @@ namespace Creation1
             this.ErrorLabel.Text = UpdateFunction();
         }
 
-        //user update button
+        //user update function
         private string UpdateFunction()
         {
             //username entered by user
@@ -370,20 +384,30 @@ namespace Creation1
 
                
 
-                while (datareader.Read())
+                if (datareader.Read())
                 {
                     Output = Output + datareader.GetValue(0) + "-" + datareader.GetValue(1) + "\n";
+                    return Output;
 
                 }
 
+                else if (!(datareader.Read()))
+                {
+                    Output = "id, not found";
+                    return Output;
+                }
 
-                return Output;
+                
+
+                
                 
             }
 
 
 
+            
 
+            
 
 
             else if (id == string.Empty)
@@ -527,7 +551,7 @@ namespace Creation1
 
         public string sql_command4;
 
-
+        //hardcoded sql commands
         public void Set_Global_Variables()
         {
             global_connection_string = @"Data Source=WIN-BEHF8SQE8DC;Database=C#Connect;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true";
